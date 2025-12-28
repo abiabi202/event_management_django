@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIGHT BOOKING</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+     <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .footer {
+            background-color: #24262b;
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #e91e63;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #ffffff;
+        }
+
+        /*responsive*/
+        @media(max-width: 767px) {
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media(max-width: 574px) {
+            .footer-col {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'logo.png' %}" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventss' %}">events</a>
+                    </li>
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">aboutus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">contactus</a>
+                </li>
+
+            </div>
+        </div>
+    </nav>
+
+
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- <center>
+        <h1 style="margin: 20px;">EVENT PLANNING</h1>
+    </center> -->
+    <div class="events">
+        <div class="event1">
+            <img src="{% static 'clight.jpg' %}" alt="" class="eventimg">
+        </div>
+
+
+        <div class="container">
+            <div class="col-md-offset-3 col-md-5">
+                <form method="POST" action="{% url 'event' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>NAME :</label>
+                        <br>
+                        <input type="text" name="Name" class="form-control" required>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label>PHONE :</label>
+                        <br>
+                        <input type="text" name="phone" class="form-control" required>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL ID :</label>
+                        <br>
+                        <input type="email" name="email" class="form-control" style="width: 400px;" required>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>PLACE :</label>
+                        <br>
+                        <input type="text" name="place" class="form-control" required>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>EVENT :</label>
+                        <br>
+                        <input type="text" name="event" class="form-control"
+                            value="BOOK SOUND LIGHT SERVICE FOR YOUR EVENT" required readonly>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>DATE :</label>
+                        <br>
+                        <input type="date" name="date" class="form-control" required>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>IMAGE :</label>
+                        <br>
+                        <input type="file" name="Image" class="form-control">
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label>DOCUMNET :</label>
+                        <br>
+                        <input type="file" name="Doc" class="form-control">
+                        <br>
+                    </div>
+                    <input type="checkbox" name="" id="" required>the information are stored
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success">
+                        <input type="reset" class="btn btn-danger">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="eventdetails">
+        <h1>Book Sound Light Service for Your Event</h1>
+        <p>
+            Elevate your event atmosphere with our professional sound and lighting services. We combine expert audio
+            setups with creative lighting designs to create an immersive experience for your guests.
+        </p>
+
+        <h2>High-Quality Sound Systems</h2>
+        <p>
+            Our sound service includes premium equipment such as speakers, microphones, mixers, and amplifiers, ensuring
+            crystal-clear audio tailored to your venue size and event type.
+        </p>
+
+        <h2>Innovative Lighting Solutions</h2>
+        <p>
+            From ambient uplighting and dynamic stage lighting to LED displays and spotlights, we customize the lighting
+            to match your event’s mood and theme perfectly.
+        </p>
+
+        <h2>Experienced Technicians</h2>
+        <p>
+            Our skilled technicians manage the setup, calibration, and live adjustments during your event to guarantee
+            flawless performance and a spectacular show.
+        </p>
+
+        <h2>Customized Packages</h2>
+        <p>
+            Whether it’s a corporate conference, wedding, concert, or party, we offer tailored packages to fit your
+            budget and event requirements.
+        </p>
+
+        <h2>Creating Unforgettable Experiences</h2>
+        <p>
+            Sound and lighting are vital elements that can transform any event from ordinary to extraordinary. Trust us
+            to deliver a seamless blend of both for an unforgettable occasion.
+        </p>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">about us</a></li>
+                        <li><a href="{% url 'eventss' %}">our services</a></li>
+                        <li><a href="{% url 'privacypolicy' %}">privacy policy</a></li>
+                        <!-- <li><a href="#">affiliate program</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a href="{% url 'contact' %}">contactus</a></li>
+                        <!-- <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li> -->
+                    </ul>
+                </div>
+                <!-- <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div> -->
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

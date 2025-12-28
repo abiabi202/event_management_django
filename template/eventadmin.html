@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        table, th, td {
+            border: 1px solid black !important;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="col-md-6">
+        {% if data %}
+        <h3 class="page-header text-primary text-center">View Details</h3>
+        <table class="table table-borderd">
+            <tr>
+                <th>s.no</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>date</th>
+                <th>place</th>
+                <th>event</th>
+                <th>image</th>
+                <th>doc</th>
+                <!--     -->
+                <th>delete</th>
+
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.place}}</td>
+                <td>{{i.event}}</td>
+                {% if i.image %}
+                <td><img src="{{ i.image.url }}" alt="image" width="100" class="img-thumbnail"></td>
+                {% else %}
+                <td>No image</td>
+                {% endif %}
+                {% if i.doc %}
+                <td><a href="{{ i.doc.url }}" target="_blank">Download</a></td>
+                {% else %}
+                <td>No document</td>
+                {% endif %}
+
+                <!-- <td><a href="updatedata/{{i.id}}" class="btn btn-success">update</a></td> -->
+                <td><a href="deletedata/{{i.id}}" class="btn btn-danger">delete</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+</body>
+</html>

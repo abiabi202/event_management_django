@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        label{
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <center>
+        <h1 style="margin: 20px;">EVENT PLANNING</h1>
+    </center>
+    <div class="events">
+        <div class="event1">
+            <img src="{% static '1.jpg' %}" alt="" class="eventimg">
+        </div>
+
+
+        <div class="container">
+            <div class="col-md-offset-3 col-md-5">
+                <form method="POST" action="{% url 'event' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>NAME :</label>
+                        <br>
+                        <input type="text" name="Name" class="form-control" required>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label>PHONE :</label>
+                        <br>
+                        <input type="text" name="phone" class="form-control" required>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL ID :</label>
+                        <br>
+                        <input type="email" name="email" class="form-control" style="width: 400px;" required>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>PLACE :</label>
+                        <br>
+                        <input type="text" name="place" class="form-control" required>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>EVENT :</label>
+                        <br>
+                        <input type="text" name="event" class="form-control" value="EVENT PLANNING" required readonly>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>DATE :</label>
+                        <br>
+                        <input type="date" name="date" class="form-control" required>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>IMAGE :</label>
+                        <br>
+                        <input type="file" name="Image" class="form-control">
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label>DOCUMNET :</label>
+                        <br>
+                        <input type="file" name="Doc" class="form-control">
+                        <br>
+                    </div>
+                    <input type="checkbox" name="" id="" required>the information are stored
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success"> 
+                        <input type="reset" class="btn btn-danger">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="eventdetails">
+        <h1>Event planning</h1>
+        <h2>What makes you unique, makes you successful”</h2>
+        <p>Expert in creating a dazzling and memorable event beyond your imagination. Absolute Entertainment is well
+            equipped with resources, know- how and experience to provide 360 degree solution for any size of the
+            event.
+            Our creativity and management run deep to provide you seamless execution at affordable prices. The
+            company is committed towards creating memorable experience for you and your guests by its meticulous
+            planning and hard work. You will be stunned by our innovation, quality and responsiveness. Our own
+            equipment and in house services, help us meeting your requirements even at the 11th hour.</p>
+        <h2>Best Event Planner in Coimbatore for Flawless Celebrations</h2>
+        <p>Looking for the best event planner in Coimbatore? Our expert team crafts unique events that reflect your
+            style and exceed your expectations. Contact us today!</p>
+        <p>Our experienced team understand the dynamism and intricacies of event, takes every step right from the
+            inception to conceptualization of an event to its final execution. Whether it’s a day out of the office,
+            either to reward or motivate your staff or, perhaps you want to say ‘thank you’ to your clients for
+            their business, we’ve got lots of ideas for you to think about. Keeping your objectives in mind, we work
+            out with each and every detail and make sure that everything is executed with a fuss, we promise you to
+            relax and enjoy the event as any other guest.</p>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- carousel-->
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static '1.jpg' %}" class="d-block w-100 custom-carousel-img" alt="..." id="imgcarsousel">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static '2.jpg' %}" class="d-block w-100 custom-carousel-img" alt="..." id="imgcarsousel">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static '3.jpg' %}" class="d-block w-100 custom-carousel-img" alt="..." id="imgcarsousel">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="aboutus">
+        <img src="{% static '1.jpg' %}" alt="" class="abtimg">
+
+        <div class="about-text">
+            <h1 class="abth1">
+                Siraj Corporate Event Management - Elevating Professional Gatherings to New Heights in Tamil Nadu
+            </h1>
+            <p>
+                Transform your corporate gatherings with the best event management company in Tamil Nadu.
+                We handle everything from planning to execution, ensuring a seamless experience.
+                Best Corporate Event Management Company in Tamil Nadu.
+            </p>
+            <h6>Event fits your budget</h6>
+            <h6>Full Customization</h6>
+            <h6>Professional Coordination</h6>
+            <a href=""><button>aboutus</button></a>
+        </div>
+    </div>
+
+
+    
+    <div class="do">
+        <h1>what we do</h1>
+        <h2>our service</h2>
+        <div class="ser">
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'ep.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">EVENT PLANNING</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="{% url 'event' %}" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'cae.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">CONFERENCES AND SEMINARS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'c.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;" style="height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title">CORPRATE RETREATS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="do">
+        <!-- <h1>what we do</h1>
+        <h2>our service</h2> -->
+        <div class="ser">
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'pl.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">PRODUCT LAUNCHES</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'award.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">AWARD CEREMONIES</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'ne.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">NETWORKING EVENTS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="do">
+        <!-- <h1>what we do</h1>
+        <h2>our service</h2> -->
+        <div class="ser">
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'cpac.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">CORPRATE PARTIES AND CELEBRATIONS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'cwae.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">WEBINARS AND VIRTUAL EVENTS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'cdevelopment.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">CONTENT DEVELOPMENT</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="do">
+        <!-- <h1>what we do</h1>
+        <h2>our service</h2> -->
+        <div class="ser">
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'csequipment.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">BOOK SOUND EQUIPMENT FOR YOUR EVENTS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'clight.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">BOOK SOUND LIGHT SERVICE FOR YOUR EVENT</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center" style="width: 18rem; border: none;">
+                <img src="{% static 'cled.jpg' %}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">LED DISPLAY PANEL FOR EVENTS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary mx-auto d-block">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

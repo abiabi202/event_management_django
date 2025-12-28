@@ -1,0 +1,56 @@
+.events {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event1 {
+    margin: 50px;
+}
+
+.eventimg {
+    height: 600px;
+    width: 900px;
+    border-radius: 5%;
+}
+
+.container form input[type="text"] {
+    width: 400px;
+}
+
+.container form input[type="file"] {
+    width: 400px;
+}
+
+.container form input[type="date "] {
+    width: 400px;
+}
+
+.eventdetails {
+    margin: 20px;
+}
+
+@media screen and (min-width:1700px) {
+    .eventimg {
+        height: 800px;
+        width: 1300px;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    .events {
+        display: block;
+        margin: 10px;
+    }
+
+    .event1 {
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    .eventimg {
+        height: 500px;
+        width: 400px;
+    }
+}

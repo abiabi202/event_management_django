@@ -1,0 +1,137 @@
+Basic Set Programs
+1)Find the size of a Set in Python
+2)Iterate over a set in Python
+3)Python – Maximum and Minimum in a Set
+4)Python – Remove items from Set
+5)Python – Check if two lists have at-least one element common
+6)Python program to find common elements in three lists using sets
+7)Python – Find missing and additional values in two lists
+8)Python program to find the difference between two lists
+9)Python Set difference to find lost element from a duplicated array
+10)Python program to count number of vowels using sets in given string
+11)Concatenated string with uncommon characters in Python
+12)Python – Program to accept the strings which contains all vowels
+13)Python – Check if a given string is binary string or not
+14)Python set to check if string is anagram
+15)Python Set – Pairs of complete strings in two sets
+
+1)a={10,20,10,'ramesh','suresh'}
+b=len(a)
+print(b)
+
+2)a={10,20,10,'ramesh','suresh'}
+a.add('hari')
+print(a)
+
+3)a={10,20,10}
+b=max(a)
+c=min(a)
+print(b)
+print(c)
+
+4)a={10,20,10,'ramesh','suresh'}
+a.pop()
+print(a)
+
+5)a={10,20,10,'ramesh','suresh'}
+b={10}
+c=a.issuperset(b)
+print(c)
+
+6)a={10,20,10,'ramesh','suresh'}
+b={10}
+c={10}
+if a.issuperset(b) and a.issuperset(c):
+    print("true")
+else:
+    print("flase")
+
+7)a={10,20,10,'ramesh','suresh'}
+b={10,40,50}
+c=a.intersection(b)
+d=a.difference(b)
+print(c)
+print(d)
+
+8)a={10,20,10,'ramesh','suresh'}
+b={10,40,50}
+c=a.difference(b)
+print(c)
+
+9)a={10,20,10,'ramesh','suresh'}
+b={10,40,50}
+c=a.difference(b)
+print(c)
+
+10)g=input("enter the word :")
+a=g.lower()
+b=a.count("a")
+c=a.count("e")
+d=a.count("i")
+e=a.count("o")
+f=a.count("u")
+
+print("a :",b)
+print("e :",c)
+print("i :",d)
+print("o :",e)
+print("u :",f)
+
+11)a="adadasdasd"
+b="dadsadsadd"
+
+d=int(input("enter the number"))
+e=int(input("enter the number"))
+
+g=a[:d]+a[e:]
+print(g)
+
+12)g=input("enter the word :")
+a=g.lower()
+b=a.count("a")
+c=a.count("e")
+d=a.count("i")
+e=a.count("o")
+f=a.count("u")
+
+print("a :",b)
+print("e :",c)
+print("i :",d)
+print("o :",e)
+print("u :",f)
+
+if b==1 and c==1 and d==1 and e==1 and f==1:
+    print("word accepted")
+else:
+    print("word not accepted")
+
+13)s = "101010000111"
+
+print(s.count("0"))
+print(s.count("1"))
+print(len(s))
+
+if len(s) == s.count('0') + s.count('1'):
+    print("Yes")
+else:
+    print("No")
+
+14)a=input("enter the word :")
+b=input("enter the word :")
+
+if set(a)==set(b):
+    print("anagram")
+else:
+    print("no")
+
+15)a = ['abcdefgh', 'asasasa', 'lmnopqrst', 'abc']
+b = ['ijklmnopqrstuvwxyz', 'abcdefghijklmnopqrstuvwxyz', 'defghijklmnopqrstuvwxyz']
+
+c = 0
+for i in a:
+    for j in b:
+        combine = i + j
+        if len(set(combine)) == 26:
+            c += 1
+print(c)
+

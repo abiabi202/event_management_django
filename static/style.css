@@ -1,0 +1,66 @@
+body{
+    background-color: rgb(0, 0, 0);
+}
+
+#imgcarsousel {
+    height: 900px;
+}
+
+.aboutus {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+}
+
+.abtimg {
+    height: 600px;
+    width: 800px;
+    object-fit: cover; /* add this to keep image aspect */
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+}
+
+.do {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ser {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 9rem;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 600px) {
+    #imgcarsousel {
+        height: 500px;
+        margin-bottom: 20px;
+        width: 100%; /* full width */
+        object-fit: cover; /* keep aspect */
+    }
+
+    .abtimg {
+        height: auto; /* let height auto adjust */
+        width: 100%; /* full width */
+        max-width: 400px; /* limit max width */
+        object-fit: cover;
+    }
+
+    .aboutus {
+        display: flex;            /* keep flex */
+        flex-direction: column;  /* stack vertically */
+        margin: 20px 10px;       /* slightly smaller margin */
+        gap: 10px;               /* smaller gap */
+        align-items: center;     /* center content */
+    }
+}
